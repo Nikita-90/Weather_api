@@ -4,6 +4,7 @@ import json
 
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
+from django.conf import settings
 
 from .models import JsonWeather, CityList
 
@@ -24,7 +25,6 @@ def index(request, city_id):
 
 
 def change_url(city_id):
-    print('change_url', city_id)
     return 'http://api.openweathermap.org/data/2.5/forecast/' \
            'daily?id={}&cnt=14&units=metric&APPID=14ff65b01e70f4669d1efc10fac26a45'.format(city_id)
 
@@ -59,7 +59,7 @@ def give_city_json(request):
 
 def update_city_list():
     CityList.objects.all().delete()
-    with open(r'weather/media/city.list.json', 'rt') as f:
+    with open(settings.BASE_DIR+'/weather/media/city.list.json', 'rt') as f:
         i = 0
         list_ad = []
         for js in f.readlines():
