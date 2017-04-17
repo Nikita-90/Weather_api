@@ -1,0 +1,22 @@
+#temperature,
+#pressure {
+	width: 50%;
+	height: 300pt;
+	display: inline-block;
+}
+
+#temperature {
+    float: left;
+}
+
+table#table_weather {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+table#table_weather th,
+table#table_weather td {
+    border: 1px solid black;
+    padding: 2pt 5pt;
+}
+

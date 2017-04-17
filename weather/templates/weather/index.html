@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.js' %}"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+
+</head>
+<body>
+
+<div id="temperature"></div>
+<div id="pressure"></div>
+
+<form method="POST">{% csrf_token %}
+    <p><input type="submit" value="Обновить спиок городов" name="list_city"></p>
+</form>
+
+<form id="select_city" action="" method="POST">{% csrf_token %}
+    <select id="id_city" name="city_id">
+        <option value="">Select a city</option>
+    </select>
+    <input id="city" type="submit">
+</form>
+
+<p id="p_city">Город: </p>
+<p id="p_coord">Страна: </p>
+<table id="table_weather">
+    <tr>
+        <th>Дата</th>
+        <th>Температура<br/>max/min(&#176 C)</th>
+        <th>Ветер<br/>(meter/sec)</th>
+        <th>Облачность<br/>(%)</th>
+        <th>Давление<br/>(hPa)</th>
+        <th>Краткое описание</th>
+    </tr>
+</table>
+
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>

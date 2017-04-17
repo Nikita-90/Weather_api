@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="1.css">
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+<script type="text/javascript" src="3.js"></script>
+
+    Hi!
+{% for r in city %}
+    <p>Город: {{r.city}}</p>
+    <p>Координаты: {{r.coord_lat}} {{r.coord_lon}}</p>
+    <table>
+        <th>Дата</th>
+        <th>Температура</th>
+        <th>Скорость ветра</th>
+        <th>Облачность</th>
+        <th>Давление</th>
+        <th>Краткое описание</th>
+            {% for w in weather %}
+                {% if w.city == r %}
+                    <tr>
+                        <td>{{ w.date }}</td>
+                        <td>{{ w.temp_max }}/{{ w.temp_min }}</td>
+                        <td>{{ w.speed }}</td>
+                        <td>{{ w.clouds }}</td>
+                        <td>{{ w.pressure }}</td>
+                        <td>{{ w.description }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+    </table>
+{% endfor %}
+</body>
+</html>
